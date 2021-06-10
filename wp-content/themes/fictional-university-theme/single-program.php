@@ -81,6 +81,22 @@
             <?php endwhile; wp_reset_postdata(); ?>
 
         <?php endif;?>
+
+        <?php
+            $relatedCampuses = get_field('related_campuses');
+
+            if ($relatedCampuses): ?>
+                <hr class="section-break">
+                <h2 class="headline headline--medium"><?php the_title(); ?> is Available At These Campuses:</h2>
+                <ul class="min-list link-list">
+                    <?php foreach($relatedCampuses as $campus): ?>
+                        <li>
+                            <a href="<?php echo get_the_permalink($campus); ?>"><?php echo get_the_title($campus) ?></a>
+                        </li>
+                    <?php endforeach;?>
+                </ul>
+            <?php endif; ?>
+
     </div>
 <?php endwhile; ?>
 
