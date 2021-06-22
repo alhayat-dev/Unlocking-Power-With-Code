@@ -54,6 +54,8 @@ function university_post_types(){
 
     // Campus Post Type
     register_post_type('campus', array(
+        'capability_type' => 'campus',
+        'map_meta_cap' => true,
         'show_in_rest' => true,
         'supports' => array('title', 'editor', 'excerpt'),
         'has_archive' => true,
