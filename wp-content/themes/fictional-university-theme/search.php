@@ -17,6 +17,7 @@ pageBanner(array(
 
     <?php else: ?>
         <h2 class="headline headline--small-plus">No results match that search.</h2>
+        <?php get_search_form(); ?>
     <?php endif; ?>
 </div>
 
