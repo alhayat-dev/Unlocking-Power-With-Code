@@ -48,8 +48,8 @@ function university_files()
         wp_enqueue_script('main-unversity-js', 'http://localhost:3000/bundled.js', NULL, '1.0', true);
     }else{
         wp_enqueue_script('our-vendors-js', get_theme_file_uri('/bundled-assets/vendors~scripts.63b765125d515b6e41c5.js'), NULL, '1.0', true);
-        wp_enqueue_script('main-unversity-js', get_theme_file_uri('/bundled-assets/scripts.32d81a5addeae256bb46.js'), NULL, '1.0', true);
-        wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.32d81a5addeae256bb46.css'));
+        wp_enqueue_script('main-unversity-js', get_theme_file_uri('/bundled-assets/scripts.a4f383aa9289b6b3c22a.js'), NULL, '1.0', true);
+        wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.a4f383aa9289b6b3c22a.css'));
     }
     wp_localize_script('main-unversity-js', 'universityData', array(
             'root_url' => get_site_url()
@@ -104,3 +104,54 @@ function universityMapKey($api){
 }
 
 add_filter('acf/fields/google_map/api', 'universityMapKey');
+
+
+// Redirect subscriber account out of the admin and onto the homepage
+
+add_action('admin_init', 'redirectSubsToFrontend');
+
+function redirectSubsToFrontend(){
+    $ourCurrentUser =  _wp_get_current_user();
+    if (count($ourCurrentUser->roles) == 1 AND $ourCurrentUser->roles[0] == 'subscriber'){
+        wp_redirect(site_url('/'));
+        exit();
+    }
+}
+
+
+// Hide admin bar for the subscriber
+
+add_action('wp_loaded', 'noSubsAdminBar');
+
+function noSubsAdminBar(){
+    $ourCurrentUser =  _wp_get_current_user();
+    if (count($ourCurrentUser->roles) == 1 AND $ourCurrentUser->roles[0] == 'subscriber'){
+        show_admin_bar(false);
+    }
+}
+
+// Customize login screen
+
+add_filter('login_headerurl', 'ourHeaderUrl');
+
+function ourHeaderUrl(){
+    return esc_url(site_url('/'));
+}
+
+
+// Load css for login page
+
+add_action('login_enqueue_scripts', 'ourLoginCSS');
+
+function ourLoginCSS(){
+    wp_enqueue_style('custom-google-font', '//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i');
+    wp_enqueue_style('our-main-styles', get_theme_file_uri('/bundled-assets/styles.a4f383aa9289b6b3c22a.css'));
+}
+
+// Change title "Powered By Wordpress"
+
+add_filter('login_headertitle', 'ourLoginTitle');
+
+function ourLoginTitle(){
+    return get_bloginfo('name');
+}
