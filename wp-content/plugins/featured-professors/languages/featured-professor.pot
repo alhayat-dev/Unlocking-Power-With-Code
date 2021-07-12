@@ -1,9 +1,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Our Test Plugin\n"
+"Project-Id-Version: Featured Professor Block Type\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-29 16:57+0000\n"
+"POT-Creation-Date: 2021-07-12 11:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -14,32 +14,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.5.3; wp-5.7.2\n"
-"X-Domain: wcpdomain"
+"X-Domain: featured-professor"
 
-#. Description of the plugin
-msgid "A truly amazing plugin."
+#. Name of the plugin
+msgid "Featured Professor Block Type"
 msgstr ""
 
 #. Author URI of the plugin
-msgid "https://www.udemy.com/user/bradschiff/"
+msgid "https://www.udemy.com/user/mudasser/"
 msgstr ""
 
 #. Author of the plugin
-msgid "Mudasser"
+msgid "Mudasser Hayat"
 msgstr ""
 
-#. Name of the plugin
-msgid "Our Test Plugin"
-msgstr ""
-
-#: our-first-unique-plugin.php:46
-msgid "This post has"
-msgstr ""
-
-#: our-first-unique-plugin.php:123
-msgid "Word Count"
-msgstr ""
-
-#: our-first-unique-plugin.php:46
-msgid "words"
+#: build/index.js:181 src/index.js:68
+msgid "Select a professor"
 msgstr ""
